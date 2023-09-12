@@ -15,6 +15,17 @@ from unittest import TestCase
 
 class TestStudentLists(TestCase):
 
+    def test_cant_create_class_with_negative_students(self):
+        with self.assertRaises(StudentError):
+            test_class = ClassList(-1)
+
+    def test_cant_create_class_with_zero_students(self):
+        with self.assertRaises(StudentError):
+            test_class = ClassList(0)
+
+    def test_can_create_class_with_positive_number_of_students(self):
+        test_class = ClassList(1)
+
     def test_add_student_check_student_in_list(self):
         test_class = ClassList(2)
         test_class.add_student('Test Student')
@@ -99,7 +110,10 @@ class TestStudentLists(TestCase):
     ## TODO write a test for index_of_student when the class_list list is empty.  
     # Assert index_of_student returns None for a student if the list is empty. 
     # use assertIsNone.
- 
+    def test_index_of_student_is_none_if_classlist_is_empty(self):
+        test_class = ClassList(2)
+        index = test_class.index_of_student('Test Student')
+        self.assertIsNone(index)
  
     ## TODO write another test for index_of_student. In the case when the 
     # class_list is not empty but has some students.
