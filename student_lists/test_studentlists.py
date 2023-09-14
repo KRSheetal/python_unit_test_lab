@@ -17,7 +17,7 @@ class TestStudentLists(TestCase):
 
     def test_cant_create_class_with_negative_students(self):
         with self.assertRaises(StudentError):
-            test_class = ClassList(-1)
+            test_class = ClassList(-1) # why is test_class is not accessed by Pylance?
 
     def test_cant_create_class_with_zero_students(self):
         with self.assertRaises(StudentError):
@@ -122,6 +122,13 @@ class TestStudentLists(TestCase):
    
     ## TODO write a test for your new is_class_full method when the class is full. 
     # use assertTrue.
+    def test_is_class_full_true(self):
+        test_class = ClassList(2)
+        self.assertTrue(test_class.is_class_full(True))
     
     ## TODO write a test for your new is_class_full method for when is empty, 
     # and when it is not full. Use assertFalse.
+    def test_is_class_full_false(self):
+        test_class = ClassList(2)
+        self.assertFalse(test_class.is_class_full(False))
+
